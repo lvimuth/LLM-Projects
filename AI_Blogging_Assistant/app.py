@@ -30,8 +30,8 @@ with st.sidebar:
     submit_button = st.button("Generate Blog")
     
 if submit_button:
-    response = chat_session.send_message(f"generate a comprehensive,engaging blog post relevant to the given title and keywords. the blog title is {blog_tittle} and the Keywords are {keywords}. The blog should be approximately {num_words} words in length, suitable for online audience. Makesure to use seo techniques and subheadings. Ensure the content is original, informative and maintain a consistent tone throughout.Generate only the content without any explanation.")
+    response = chat_session.send_message(
+        f"generate a comprehensive, engaging blog post relevant to the given title and keywords. The blog title is {blog_tittle} and the Keywords are {keywords}. The blog should be approximately {num_words} words in length, suitable for an online audience. Make sure to use SEO techniques and subheadings. Ensure the content is original, informative, and maintains a consistent tone throughout. Generate only the content without any explanation."
+    )
 
-    print(response.text)
-    st.image()
-    st.write(response)
+    st.write(response.parts[0].text)
