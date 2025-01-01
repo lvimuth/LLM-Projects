@@ -34,18 +34,25 @@ with st.sidebar:
     
 if submit_button:
     blog_response = chat_session.send_message(
-        f"generate a comprehensive, engaging blog post relevant to the given title and keywords. The blog title is {blog_tittle} and the Keywords are {keywords}. The blog should be approximately {num_words} words in length, suitable for an online audience. Make sure to use SEO techniques and subheadings. Ensure the content is original, informative, and maintains a consistent tone throughout. Generate only the content without any explanation."
+        f"generate a comprehensive, engaging blog post relevant to the given title and keywords. The blog title is {blog_tittle} and the Keywords are {keywords}.And use {num_images} images to describe the blogs and for the image place holders use [image] The blog should be approximately {num_words} words in length, suitable for an online audience. Make sure to use SEO techniques and subheadings. Ensure the content is original, informative, and maintains a consistent tone throughout. Generate only the content without any explanation.The heading should be in bold, and the subheadings should be in medium bold."
     )
+    print('////////')
+    print(blog_response.parts[0].text)
     
-    image_response = image_session.send_message(f"'{blog_response.parts[0].text}' summerize this blog post and generate a prompt to generate an image using hugging face to add in to the above mention blog post. give me only the Image Prompt as output. image should be realisitc natural 3d")
-    
+    for i in range(num_images):
+        image_response = image_session.send_message(f"'{blog_response.parts[0].text}' summerize this blog post and generate a prompt to generate an image using hugging face to add in to the above mention blog post. give me only the Image Prompt as output. image should be realisitc natural 3d")
+        print('$$$$$$$$$$$$')
+        print(image_response.parts[0].text)
     
     # image_prompt = image_response.parts[0].text.split("\n\n**Image Prompt:**\n\n")[1]
 
-    image = client.text_to_image(image_response.parts[0].text)
+    #     image = client.text_to_image(image_response.parts[0].text)
+        
+    #     blog_text = blog_response.parts[0].text.replace("[image]", f"<img src='{image}' />", 1)
+
     
-    # Display the PIL.Image object in Streamlit
-    st.image(image, use_column_width=True)
+    # # Display the PIL.Image object in Streamlit
+    # st.image(image, use_column_width=True)
 
 
-    st.write(blog_response.parts[0].text)
+    # st.write(blog_response.parts[0].text)
