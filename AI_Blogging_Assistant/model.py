@@ -35,6 +35,23 @@ chat_session = model.start_chat(
   ]
 )
 
+image_session = model.start_chat(
+  history=[
+    {
+      "role": "user",
+      "parts": [
+        "\"How Will Be 2025 with AI? A Glimpse into the Future\n2025 is shaping up to be a landmark year, largely thanks to the rapid advancements in Artificial Intelligence. We’re not just talking about science fiction anymore; AI is actively transforming how we live, work, and interact with the world. So, what can we realistically expect in 2025? Let’s explore.\n\nThe Rise of Everyday AI Tools\nForget clunky interfaces and complex commands. In 2025, expect to see AI tools seamlessly integrated into our daily lives. From personalized shopping experiences to intelligent home assistants that anticipate your needs, AI will become increasingly intuitive and user-friendly. We’ll likely interact with AI without even realizing it, making everyday tasks smoother and more efficient.\n\nOpen AI: The Foundation of Innovation\nOpenAI will undoubtedly continue to play a pivotal role in shaping the AI landscape. Expect to see their models powering even more applications, from creative tools for artists and writers to advanced data analysis solutions for businesses. The accessibility of OpenAI’s resources will likely democratize AI development, leading to a surge of innovative products and services.\n\nCloude AI: The Power of Context\nCloude AI’s strength lies in its ability to understand context and nuance, moving beyond basic task completion to offer genuinely intelligent and helpful responses. In 2025, Cloude AI is poised to become a go-to for tasks requiring deeper understanding and critical thinking, further blurring the lines between human and artificial intelligence. Expect to see its applications in customer service, education, and creative fields.\n\nGenerative AI: Unleashing Creativity\nGet ready for an explosion of creative content thanks to Generative AI. From AI-generated art and music to customized video content and personalized learning materials, expect the quality and availability of AI-produced creative outputs to skyrocket in 2025. This will empower creators of all kinds and potentially transform the entertainment and media landscape.\n\n2025: The Dawn of the AI-Empowered Era\n2025 isn’t just about new gadgets; it's about an AI-powered paradigm shift. The integration of AI into our lives will be more profound than ever, offering unprecedented opportunities for efficiency, innovation, and personal growth. Prepare to witness a world where AI isn’t just a tool, but an integral part of our existence.\" summerize this blog post and generate a prompt to generate an image using hugging face to add in to the above mention blog post. give me only the Image Prompt as output. image should be realisitc natural 3d",
+      ],
+    },
+    {
+      "role": "model",
+      "parts": [
+        "**Summary:**\n\nThis blog post predicts that 2025 will be a landmark year for AI, with seamless integration into daily life. Everyday AI tools will become intuitive and user-friendly. OpenAI's models will power more applications, democratizing AI development, while Cloude AI will excel in understanding context, impacting customer service, education, and creative fields. Generative AI will explode, leading to a surge in AI-produced creative content. Ultimately, 2025 is presented as the beginning of an AI-empowered era where AI becomes an integral part of our existence, boosting efficiency, innovation, and personal growth.\n\n**Image Prompt:**\n\nA photorealistic 3D rendering of a modern, bright, open-concept living room. A transparent holographic interface floats mid-air, displaying complex data visualizations and intuitive control panels. A person is interacting with the interface by hand gestures. In the background, intelligent devices are seamlessly integrated into the furniture and environment, all reflecting a subtle, futuristic glow. The scene should convey a sense of seamless integration of technology into everyday life. The overall color scheme should be bright and inviting, suggesting a comfortable and optimistic future.\n",
+      ],
+    },
+  ]
+)
+
 # response = chat_session.send_message("INSERT_INPUT_HERE")
 
 # print(response.text)

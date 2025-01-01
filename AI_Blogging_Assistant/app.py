@@ -1,9 +1,8 @@
 import streamlit as st
-from model import chat_session
+from model import chat_session,image_session
 import streamlit as st
 from PIL import Image
-
-from imageGen import image
+from imageGen import client
 
 st.set_page_config(layout="wide")
 blog = ''
@@ -34,12 +33,19 @@ with st.sidebar:
     submit_button = st.button("Generate Blog")
     
 if submit_button:
-    response = chat_session.send_message(
+    blog_response = chat_session.send_message(
         f"generate a comprehensive, engaging blog post relevant to the given title and keywords. The blog title is {blog_tittle} and the Keywords are {keywords}. The blog should be approximately {num_words} words in length, suitable for an online audience. Make sure to use SEO techniques and subheadings. Ensure the content is original, informative, and maintains a consistent tone throughout. Generate only the content without any explanation."
     )
     
+    image_response = image_session.send_message(f"'{blog_response.parts[0].text}' summerize this blog post and generate a prompt to generate an image using hugging face to add in to the above mention blog post. give me only the Image Prompt as output. image should be realisitc natural 3d")
+    
+    
+    # image_prompt = image_response.parts[0].text.split("\n\n**Image Prompt:**\n\n")[1]
+
+    image = client.text_to_image(image_response.parts[0].text)
+    
     # Display the PIL.Image object in Streamlit
-    st.image(image, caption="Generated Image", use_column_width=True)
+    st.image(image, use_column_width=True)
 
 
-    st.write(response.parts[0].text)
+    st.write(blog_response.parts[0].text)
