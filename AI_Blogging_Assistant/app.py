@@ -42,7 +42,7 @@ if submit_button:
     for i in range(num_images):
         image_response = image_session.send_message(f"'{blog_response.parts[0].text}' summerize this blog post and generate a prompt to generate an image using hugging face to add in to the above mention blog post. give me only the Image Prompt as output. image should be realisitc natural 3d")
         print('$$$$$$$$$$$$')
-        print(image_response.parts[0].text)
+        print(image_response.parts[0].text.split('**')[2])
     
     # image_prompt = image_response.parts[0].text.split("\n\n**Image Prompt:**\n\n")[1]
 
