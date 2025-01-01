@@ -1,5 +1,9 @@
 import streamlit as st
 from model import chat_session
+import streamlit as st
+from PIL import Image
+
+from imageGen import image
 
 st.set_page_config(layout="wide")
 blog = ''
@@ -33,5 +37,9 @@ if submit_button:
     response = chat_session.send_message(
         f"generate a comprehensive, engaging blog post relevant to the given title and keywords. The blog title is {blog_tittle} and the Keywords are {keywords}. The blog should be approximately {num_words} words in length, suitable for an online audience. Make sure to use SEO techniques and subheadings. Ensure the content is original, informative, and maintains a consistent tone throughout. Generate only the content without any explanation."
     )
+    
+    # Display the PIL.Image object in Streamlit
+    st.image(image, caption="Generated Image", use_column_width=True)
+
 
     st.write(response.parts[0].text)
