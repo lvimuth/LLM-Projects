@@ -1,6 +1,7 @@
 import streamlit as st
 from pathlib import Path
 import google.generativeai as genai
+from model import chat_session
 
 
 #Set the page configuration
@@ -23,4 +24,6 @@ if submit_button:
         st.error('No file uploaded.')
         # st.warning('This is a warning', icon="⚠️")
     else:
-        pass
+        response = chat_session.send_message("INSERT_INPUT_HERE")
+
+        print(response.text)
